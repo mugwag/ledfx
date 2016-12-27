@@ -1,10 +1,10 @@
-$gray: #eee;
 
 md-content.md-default-theme {
-  background-color: $gray;
+  background-color: #eee;
 }
+
 md-card {
-  background-color: #fff;
+  /*background-color: #fff;*/
   h2:first-of-type {
     margin-top: 0;
   }

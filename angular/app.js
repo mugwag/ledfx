@@ -1,6 +1,18 @@
 var app = angular.module('StarterApp', ['ngMaterial', 'ngMdIcons']);
 
 app.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog', function($scope, $mdBottomSheet, $mdSidenav, $mdDialog){
+
+  $scope.showAlert = function(){
+
+      $mdDialog.show(
+                    $mdDialog.alert()
+                    .title('Success!')
+                    .content('Hello World')
+                    .ok('Ok')
+                    );
+
+  };
+
   $scope.toggleSidenav = function(menuId) {
     $mdSidenav(menuId).toggle();
   };
@@ -136,6 +148,7 @@ app.config(function($mdThemingProvider) {
       'default': '500',
       'hue-1': '50'
     })
+    .dark()
     .accentPalette('pink');
   $mdThemingProvider.theme('input', 'default')
         .primaryPalette('grey')
