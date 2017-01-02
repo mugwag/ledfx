@@ -5,6 +5,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link type="text/css" rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/styles.css" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
   <body layout="row" ng-controller="AppCtrl">
@@ -32,7 +34,7 @@
   <nav class="nav-extended">
     <div class="nav-wrapper">
       <a href="#" data-activates="slide-out" class="left button-collapse show-on-large"><i class="material-icons">menu</i></a>
-      <a href="#" class="brand-logo">Logo</a>
+      <a href="#" class="brand-logo">LedFX</a>
 
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="sass.html">Sass</a></li>
@@ -58,21 +60,29 @@
   <div id="test3" class="col s12">Test 3</div>
   <div id="test4" class="col s12">
     <div ng-controller="AdminController">
-      <div ng-repeat="act in actdata.data">
+      <div id="contentTiles" ng-repeat="act in actdata.data">
       <div class="row">
-          <div class="col s12 m7">
-            <div class="card" ng-repeat="event in act">
-              <div class="card-image">
-                <img src="images/sample-1.jpg">
-                <span class="card-title">{{act.act_title}}</span>
-              </div>
-              <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.
-                I am convenient because I require little markup to use effectively.</p>
-              </div>
-              <div class="card-action">
-                <a href="#">This is a link</a>
-              </div>
+          <div class="section padding">
+            <div class="padding col s12 m6 l4" ng-repeat="event in act.event">
+                <div class="card">
+                  <div class="card-image">
+                    <img class="activator" src="img/sample-1.jpg">
+                    <span class="card-title">{{event.event_date}}</span>
+                  </div>
+                  <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+                  </div>
+                  <div class="card-action">
+                    <a href="#">This is a link</a>
+                  </div>
+                  <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                  </div>
+
+                </div>
             </div>
           </div</div>
         </div>
