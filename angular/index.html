@@ -48,26 +48,61 @@
       </ul>
 
       <ul class="tabs tabs-transparent">
-        <li class="tab"><a class="waves-effect" href="#test1">Test 1</a></li>
-        <li class="tab"><a class="active" href="#test2">Test 2</a></li>
+        <li class="tab"><a class="waves-effect" href="#test1">Posts</a></li>
+        <li class="tab"><a class="active" href="#test2">Images</a></li>
         <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
-        <li class="tab"><a class="waves-effect" href="#test4">Test 4</a></li>
+        <li class="tab"><a class="waves-effect" href="#test4">Events</a></li>
       </ul>
     </div>
   </nav>
-  <div id="test1" class="col s12">Test 1</div>
-  <div id="test2" class="col s12">Test 2</div>
+  <!-- POSTS -->
+  <div id="test1" class="col s12">Posts</div>
+
+
+  <!-- IMAGES -->
+  <div id="test2" class="col s12">
+    <div ng-controller="AdminController">
+      <div class="imageTiles" ng-repeat="act in actdata.data">
+      <div class="row">
+          <div class="section padding">
+            <div class="padding col s12 m6 l3" ng-repeat="image in act.image">
+                <div class="card hoverable">
+                  <div class="card-image">
+                    <img class="activator" src="https://s3.amazonaws.com/soundfi-content-1/{{image.image_thumb_url}}">
+                  </div>
+                  <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+                    <p>{{image.created_at}}</p>
+                  </div>
+
+                  <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                  </div>
+
+                </div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
   <div id="test3" class="col s12">Test 3</div>
+
+  <!-- EVENTS -->
   <div id="test4" class="col s12">
     <div ng-controller="AdminController">
-      <div id="contentTiles" ng-repeat="act in actdata.data">
+      <div class="eventTiles" ng-repeat="act in actdata.data">
       <div class="row">
           <div class="section padding">
             <div class="padding col s12 m6 l4" ng-repeat="event in act.event">
-                <div class="card">
+                <div class="card hoverable">
                   <div class="card-image">
                     <img class="activator" src="img/sample-1.jpg">
-                    <span class="card-title">{{event.event_date}}</span>
+                    <span class="card-title">
+                      <time class="date day col-sm-2">{{event.event_date | day }}</time>
+                      <time class="date month col-sm-2">{{event.event_date | month }}</time></span>
+
                   </div>
                   <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
@@ -84,9 +119,10 @@
 
                 </div>
             </div>
-          </div</div>
+          </div></div>
         </div>
-  </div>
+      </div>
+</div>
 
 
     <!-- Angular Material Dependencies -->
