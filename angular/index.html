@@ -2,223 +2,96 @@
 
 <html lang="en" ng-app="StarterApp">
   <head>
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css"  media="screen,projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
   <body layout="row" ng-controller="AppCtrl">
-    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
-      <md-toolbar class="md-hue-2" layout-padding>
-        <div class="md-toolbar-tools">
-          <user-avatar></user-avatar>
-          <h3 layout-padding>LedFx</h3>
-        </div>
-      </md-toolbar>
-      <!-- <md-menu>
 
-        <md-menu-content>
+    <!-- SIDEBAR -->
 
-          <md-menu-item ng-repeat="item in menu">
-            <md-button>
-              <md-icon md-menu-align-target md-icon="{{item.icon}}"></md-icon>
-              {{item.title}}
-            </md-button>
-          </md-menu-item>
+    <ul id="slide-out" class="side-nav">
+    <li><div class="userView">
+      <div class="background">
+        <img src="images/office.jpg">
+      </div>
+      <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
+      <a href="#!name"><span class="white-text name">John Doe</span></a>
+      <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+    </div></li>
+    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+    <li><a href="#!">Second Link</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+  </ul>
 
-      </md-menu-content>
-    </md-menu> -->
+  <!-- NAVBAR -->
 
-    </md-sidenav>
-    <div layout="column" class="relative" layout-fill role="main">
-      <md-button class="md-fab md-fab-bottom-right" aria-label="Add" ng-click="showAdd($event)">
-        <ng-md-icon icon="add"></ng-md-icon>
-      </md-button>
-      <md-toolbar ng-show="!showSearch">
-        <div class="md-toolbar-tools">
-          <md-button ng-click="toggleSidenav('left')" hide-gt-md aria-label="Menu">
-            <ng-md-icon icon="menu"></ng-md-icon>
-          </md-button>
-          <h3>
-            LedFx
-          </h3>
-          <span flex></span>
+  <nav class="nav-extended">
+    <div class="nav-wrapper">
+      <a href="#" data-activates="slide-out" class="left button-collapse show-on-large"><i class="material-icons">menu</i></a>
+      <a href="#" class="brand-logo">Logo</a>
 
-          <md-button class="md-primary md-raised md-accent" ng-click="showAlert()">
-              Alert Dialog
-          </md-button>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
 
-          <md-button aria-label="Search" ng-click="showSearch = !showSearch">
-            <ng-md-icon icon="search"></ng-md-icon>
-          </md-button>
-          <md-button aria-label="Open Settings" ng-click="showListBottomSheet($event)">
-            <ng-md-icon icon="more_vert"></ng-md-icon>
-          </md-button>
-        </div>
-        <md-tabs md-stretch-tabs class="md-primary" md-selected="data.selectedIndex">
-          <md-tab id="tab1" aria-controls="tab1-content">
-            Latest
-          </md-tab>
-          <md-tab id="tab2" aria-controls="tab2-content">
-            Favorites
-          </md-tab>
-
-          <md-tab id="tab3" aria-controls="tab3-content">
-            Test Data
-          </md-tab>
-
-        </md-tabs>
-      </md-toolbar>
-      <md-toolbar class="md-hue-1" ng-show="showSearch">
-        <div class="md-toolbar-tools">
-          <md-button ng-click="showSearch = !showSearch" aria-label="Back">
-            <ng-md-icon icon="arrow_back"></ng-md-icon>
-          </md-button>
-          <h3 flex="10">
-            Back
-          </h3>
-          <md-input-container md-theme="input" flex>
-            <label>&nbsp;</label>
-            <input ng-model="search.who" placeholder="enter search">
-          </md-input-container>
-          <md-button aria-label="Search" ng-click="showSearch = !showSearch">
-            <ng-md-icon icon="search"></ng-md-icon>
-          </md-button>
-          <md-button aria-label="Open Settings" ng-click="showListBottomSheet($event)">
-            <ng-md-icon icon="more_vert"></ng-md-icon>
-          </md-button>
-        </div>
-
-      </md-toolbar>
-      <md-content flex md-scroll-y>
-        <ui-view layout="column" layout-fill layout-padding>
-          <div class="inset" hide-sm></div>
-            <ng-switch on="data.selectedIndex" class="tabpanel-container">
-              <div role="tabpanel"
-                   id="tab1-content"
-                   aria-labelledby="tab1"
-                   ng-switch-when="0"
-                   md-swipe-left="next()"
-                   md-swipe-right="previous()"
-                   layout="row" layout-align="center center">
-                  <md-card flex-gt-sm="90" flex-gt-md="80">
-                    <md-card-content>
-                      <h2>Activity</h2>
-                      <md-list>
-                        <md-item ng-repeat="item in activity | filter:search">
-                          <md-item-content>
-                            <div class="md-tile-left inset" hide-sm>
-                                <user-avatar></user-avatar>
-                            </div>
-                            <div class="md-tile-content">
-                              <h3>{{item.what}}</h3>
-                              <h4>{{item.who}}</h4>
-                              <p>
-                                {{item.notes}}
-                              </p>
-                            </div>
-                          </md-item-content>
-                          <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
-                          <md-divider hide-gt-sm ng-if="!$last"></md-divider>
-                        </md-item>
-                        <md-divider></md-divider>
-                        <md-item layout class="inset">
-                            <md-button layout layout-align="start center" flex class="md-primary">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg> More
-                            </md-button>
-                        </md-item>
-                      </md-list>
-                    </md-card-content>
-                  </md-card>
-              </div>
-              <div role="tabpanel"
-                   id="tab2-content"
-                   aria-labelledby="tab2"
-                   ng-switch-when="1"
-                   md-swipe-left="next()"
-                   md-swipe-right="previous()"
-                   layout="row" layout-align="center center">
-                  <md-card flex-gt-sm="90" flex-gt-md="80">
-                    <md-card-content>
-                      <h2>Favorites</h2>
-                      <md-list>
-                        <md-item ng-repeat="item in activity | filter:search | orderBy:'-what'">
-                          <md-item-content>
-                            <div class="md-tile-left inset" hide-sm>
-                                <user-avatar></user-avatar>
-                            </div>
-                            <div class="md-tile-content">
-                              <h3>{{item.what}}</h3>
-                              <h4>{{item.who}}</h4>
-                              <p>
-                                {{item.notes}}
-                              </p>
-                            </div>
-                          </md-item-content>
-                          <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
-                          <md-divider hide-gt-sm ng-if="!$last"></md-divider>
-                        </md-item>
-                        <md-divider></md-divider>
-                        <md-item layout class="inset">
-                            <md-button layout layout-align="start center" flex class="md-primary">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg> More
-                            </md-button>
-                        </md-item>
-                      </md-list>
-                    </md-card-content>
-                  </md-card>
-              </div>
-
-              <div role="tabpanel"
-                   id="tab3-content"
-                   aria-labelledby="tab3"
-                   ng-switch-when="2"
-                   md-swipe-left="next()"
-                   md-swipe-right="previous()"
-                   layout="row" layout-align="center center"
-                   ng-controller="AdminController">
-
-                   <div ng-repeat="act in actdata">
-
-                     <div ng-repeat="act in act">
-{{act.act_title}}
-                  <md-card flex-gt-sm="90" flex-gt-md="80" ng-repeat="event in act.event">
-                    <md-card-content>
-                      <h2>{{event.event_description}}</h2>
-                      <md-list>
-                        <md-item>
-                          <md-item-content>
-                          {{event.event_date}}
-                          </md-item-content>
-                          <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
-                          <md-divider hide-gt-sm ng-if="!$last"></md-divider>
-                        </md-item>
-                        <md-divider></md-divider>
-                        <md-item layout class="inset">
-                            <md-button layout layout-align="start center" flex class="md-primary">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg> More
-                            </md-button>
-                        </md-item>
-                      </md-list>
-                    </md-card-content>
-                  </md-card>
-                </div>
-                </div>
-              </div>
-
-
-          </ng-switch>
-
-        </ui-view>
-      </md-content>
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a class="waves-effect" href="#test1">Test 1</a></li>
+        <li class="tab"><a class="active" href="#test2">Test 2</a></li>
+        <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
+        <li class="tab"><a class="waves-effect" href="#test4">Test 4</a></li>
+      </ul>
     </div>
+  </nav>
+  <div id="test1" class="col s12">Test 1</div>
+  <div id="test2" class="col s12">Test 2</div>
+  <div id="test3" class="col s12">Test 3</div>
+  <div id="test4" class="col s12">
+    <div ng-controller="AdminController">
+      <div ng-repeat="act in actdata.data">
+      <div class="row">
+          <div class="col s12 m7">
+            <div class="card" ng-repeat="event in act">
+              <div class="card-image">
+                <img src="images/sample-1.jpg">
+                <span class="card-title">{{act.act_title}}</span>
+              </div>
+              <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information.
+                I am convenient because I require little markup to use effectively.</p>
+              </div>
+              <div class="card-action">
+                <a href="#">This is a link</a>
+              </div>
+            </div>
+          </div</div>
+        </div>
+  </div>
+
+
     <!-- Angular Material Dependencies -->
+    <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="bower_components/materialize/dist/js/materialize.min.js"></script>
+
     <script src="/bower_components/angular/angular.js"></script>
-    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <!-- <script src="/bower_components/angular-aria/angular-aria.js"></script>
     <script src="/bower_components/angular-animate/angular-animate.js"></script>
-    <script src="/bower_components/angular-material/angular-material.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script> -->
     <script src="/bower_components/angular-material-icons/angular-material-icons.js"></script>
 
     <script src="app.js"></script>
     <script src="adminController.js"></script>
+    <script src="materialControls.js"></script>
   </body>
 </html>
