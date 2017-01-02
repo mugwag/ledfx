@@ -61,6 +61,11 @@
           <md-tab id="tab2" aria-controls="tab2-content">
             Favorites
           </md-tab>
+
+          <md-tab id="tab3" aria-controls="tab3-content">
+            Test Data
+          </md-tab>
+
         </md-tabs>
       </md-toolbar>
       <md-toolbar class="md-hue-1" ng-show="showSearch">
@@ -163,6 +168,44 @@
                   </md-card>
               </div>
 
+              <div role="tabpanel"
+                   id="tab3-content"
+                   aria-labelledby="tab3"
+                   ng-switch-when="2"
+                   md-swipe-left="next()"
+                   md-swipe-right="previous()"
+                   layout="row" layout-align="center center"
+                   ng-controller="AdminController">
+
+                   <div ng-repeat="act in actdata">
+
+                     <div ng-repeat="act in act">
+{{act.act_title}}
+                  <md-card flex-gt-sm="90" flex-gt-md="80" ng-repeat="event in act.event">
+                    <md-card-content>
+                      <h2>{{event.event_description}}</h2>
+                      <md-list>
+                        <md-item>
+                          <md-item-content>
+                          {{event.event_date}}
+                          </md-item-content>
+                          <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+                          <md-divider hide-gt-sm ng-if="!$last"></md-divider>
+                        </md-item>
+                        <md-divider></md-divider>
+                        <md-item layout class="inset">
+                            <md-button layout layout-align="start center" flex class="md-primary">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg> More
+                            </md-button>
+                        </md-item>
+                      </md-list>
+                    </md-card-content>
+                  </md-card>
+                </div>
+                </div>
+              </div>
+
+
           </ng-switch>
 
         </ui-view>
@@ -176,5 +219,6 @@
     <script src="/bower_components/angular-material-icons/angular-material-icons.js"></script>
 
     <script src="app.js"></script>
+    <script src="adminController.js"></script>
   </body>
 </html>

@@ -1,6 +1,12 @@
-var app = angular.module('StarterApp', ['ngMaterial', 'ngMdIcons']);
+(function() {
 
-app.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog', function($scope, $mdBottomSheet, $mdSidenav, $mdDialog){
+    'use strict';
+
+    var app = angular
+    .module('StarterApp', ['ngMaterial', 'ngMdIcons'])
+    angular.module('StarterApp.controllers', []); // Notice the empty array at the end here
+
+    app.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog', function($scope, $mdBottomSheet, $mdSidenav, $mdDialog){
 
   $scope.showAlert = function(){
 
@@ -117,7 +123,7 @@ app.controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
   };
 });
 
-function DialogController($scope, $mdDialog) {
+app.controller('DialogController', function($scope, $mdDialog) {
   $scope.hide = function() {
     $mdDialog.hide();
   };
@@ -127,7 +133,7 @@ function DialogController($scope, $mdDialog) {
   $scope.answer = function(answer) {
     $mdDialog.hide(answer);
   };
-};
+});
 
 app.directive('userAvatar', function() {
   return {
@@ -136,20 +142,92 @@ app.directive('userAvatar', function() {
   };
 });
 
-app.config(function($mdThemingProvider) {
-  var customBlueMap = 		$mdThemingProvider.extendPalette('light-blue', {
-    'contrastDefaultColor': 'light',
-    'contrastDarkColors': ['50'],
-    '50': 'ffffff'
-  });
-  $mdThemingProvider.definePalette('customBlue', customBlueMap);
-  $mdThemingProvider.theme('default')
-    .primaryPalette('customBlue', {
-      'default': '500',
-      'hue-1': '50'
-    })
-    .dark()
-    .accentPalette('pink');
-  $mdThemingProvider.theme('input', 'default')
-        .primaryPalette('grey')
+app.config(function ($mdThemingProvider) {
+    var customPrimary = {
+        '50': '#ffffff',
+        '100': '#ffffff',
+        '200': '#ffffff',
+        '300': '#f6f6f6',
+        '400': '#eaeaea',
+        '500': '#dddddd',
+        '600': '#d0d0d0',
+        '700': '#c3c3c3',
+        '800': '#b7b7b7',
+        '900': '#aaaaaa',
+        'A100': '#ffffff',
+        'A200': '#ffffff',
+        'A400': '#ffffff',
+        'A700': '#9d9d9d'
+    };
+    $mdThemingProvider
+        .definePalette('customPrimary',
+                        customPrimary);
+
+    var customAccent = {
+        '50': '#52143d',
+        '100': '#66194c',
+        '200': '#7a1f5c',
+        '300': '#8f246b',
+        '400': '#a3297a',
+        '500': '#b82e8a',
+        '600': '#d147a3',
+        '700': '#d65cad',
+        '800': '#db70b8',
+        '900': '#e085c2',
+        'A100': '#d147a3',
+        'A200': '#cc3399',
+        'A400': '#b82e8a',
+        'A700': '#e699cc'
+    };
+    $mdThemingProvider
+        .definePalette('customAccent',
+                        customAccent);
+
+    var customWarn = {
+        '50': '#ff794d',
+        '100': '#ff6633',
+        '200': '#ff531a',
+        '300': '#ff4000',
+        '400': '#e63900',
+        '500': '#cc3300',
+        '600': '#b32d00',
+        '700': '#992600',
+        '800': '#802000',
+        '900': '#661a00',
+        'A100': '#ff8c66',
+        'A200': '#ff9f80',
+        'A400': '#ffb399',
+        'A700': '#4d1300'
+    };
+    $mdThemingProvider
+        .definePalette('customWarn',
+                        customWarn);
+
+    var customBackground = {
+        '50': '#ffffff',
+        '100': '#ffffff',
+        '200': '#ffffff',
+        '300': '#fafafa',
+        '400': '#eeeeee',
+        '500': '#e1e1e1',
+        '600': '#d4d4d4',
+        '700': '#c7c7c7',
+        '800': '#bbbbbb',
+        '900': '#aeaeae',
+        'A100': '#ffffff',
+        'A200': '#ffffff',
+        'A400': '#ffffff',
+        'A700': '#a1a1a1'
+    };
+    $mdThemingProvider
+        .definePalette('customBackground',
+                        customBackground);
+
+   $mdThemingProvider.theme('default')
+       .primaryPalette('customPrimary')
+       .accentPalette('customAccent')
+       .warnPalette('customWarn')
+       .backgroundPalette('customBackground')
 });
+
+})();
