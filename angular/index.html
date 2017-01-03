@@ -30,11 +30,11 @@
   </ul>
 
   <!-- NAVBAR -->
-
-  <nav class="nav-extended">
+<div class="navbar-fixed nav-extended">
+  <nav class="nav-extended grey darken-4">
     <div class="nav-wrapper">
       <a href="#" data-activates="slide-out" class="left button-collapse show-on-large"><i class="material-icons">menu</i></a>
-      <a href="#" class="brand-logo">LedFX</a>
+      <a href="#" class="brand-logo">MUZOVA</a>
 
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="sass.html">Sass</a></li>
@@ -47,16 +47,47 @@
         <li><a href="collapsible.html">JavaScript</a></li>
       </ul>
 
-      <ul class="tabs tabs-transparent">
-        <li class="tab"><a class="waves-effect" href="#test1">Posts</a></li>
-        <li class="tab"><a class="active" href="#test2">Images</a></li>
-        <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
+      <ul class="tabs grey darken-4">
+        <li class="tab"><a class="waves-effect active" href="#test1">Posts</a></li>
+        <li class="tab"><a class="waves-effect" href="#test2">Images</a></li>
         <li class="tab"><a class="waves-effect" href="#test4">Events</a></li>
       </ul>
     </div>
   </nav>
+</div>
+
   <!-- POSTS -->
-  <div id="test1" class="col s12">Posts</div>
+  <div id="test1" class="col s12">
+    <div ng-controller="AdminController">
+      <div class="postTiles" ng-repeat="act in actdata.data">
+      <div class="row">
+          <div class="section padding">
+            <div class="padding col s12 m6 l4" ng-repeat="post in act.post">
+                <div class="card hoverable">
+                  <div class="card-image">
+                    <img class="activator" src="img/sample-1.jpg">
+                    <span class="card-title">
+                      {{post.post_title}}
+                    </span>
+                  </div>
+                  <div class="card-content">
+                    <p class="activator grey-text text-lighten-1">{{post.created_at}}<i class="material-icons right">more_vert</i></p>
+
+                    <p class="flow-text">{{post.post_text}}</p>
+
+                  </div>
+
+                  <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                  </div>
+
+                </div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
 
 
   <!-- IMAGES -->
@@ -87,7 +118,6 @@
       </div>
     </div>
 
-  <div id="test3" class="col s12">Test 3</div>
 
   <!-- EVENTS -->
   <div id="test4" class="col s12">

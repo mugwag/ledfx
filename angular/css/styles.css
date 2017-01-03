@@ -15,3 +15,8 @@
 .padding{
 padding:0px 5px;
 }
+
+
+.navbar-fixed{
+    height: 112px;
+  }
