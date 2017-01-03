@@ -20,3 +20,13 @@ padding:0px 5px;
 .navbar-fixed{
     height: 112px;
   }
+
+  .card .card-content .card-title {
+    line-height: 30px;
+    padding-bottom: 10px;
+    display: block;
+  }
+
+  .activator{
+    cursor:pointer;
+  }

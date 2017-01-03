@@ -59,7 +59,41 @@ var app =  angular
           };
         });
 
+        app.filter('maxLines', function() {
+          return function(txt,  limit) {
+
+              var parts = txt.split("\n");
+
+              if(limit == 0) return parts.join('\n');
+              var htmldata = parts.slice(0,limit).join('\n');
+
+              return htmldata;
+              }
+        });
+
+        app.filter('textSize', function() {
+          return function(txt, letterLimit, linesLimit) {
+
+              var length = txt.length;
+              var parts = txt.split("\n");
+              var flag = false;
+
+              if(length > letterLimit) {
+                flag = true;
+                }
+
+              if(parts[linesLimit]){
+                flag = true;
+              }
+
+              return flag;
+              }
+        });
+
         app.controller('AdminController', function($scope, $http) {
+
+          $scope.letterLimit = 250;
+          $scope.linesLimit = 5;
 
           $http.get('http://dev.ledfx:8888/testdata/apidata.json').then(function(act) {
               $scope.actdata = act;
