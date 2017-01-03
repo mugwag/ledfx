@@ -8,8 +8,11 @@
     <link type="text/css" rel="stylesheet" href="css/styles.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
   </head>
   <body layout="row" ng-controller="AppCtrl">
+
+    <div ng-controller="AdminController">
 
     <!-- SIDEBAR -->
 
@@ -59,13 +62,23 @@
   </nav>
 </div>
 
+    <div style="height:100%" data-loading>
+      <div class="center-align"><h4>data loading</h4></div>
+      <div class="valign-wrapper">
+          <div class="progress valign">
+            <div class="indeterminate"></div>
+          </div>
+        </div>
+    </div>
+
+
   <!-- POSTS -->
   <div id="posts" class="col s12">
     <div class="fixed-action-btn" tyle="bottom: 45px; right: 24px;">
         <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
     </div>
     <div class="page-title"><h3>Posts</h3></div>
-    <div ng-controller="AdminController">
+    <div>
       <div class="postTiles" ng-repeat="act in actdata">
       <div class="row">
           <div class="section padding">
@@ -103,7 +116,7 @@
         <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
     </div>
     <div class="page-title"><h3>Images</h3></div>
-    <div ng-controller="AdminController">
+    <div>
 
       <div class="imageTiles" ng-repeat="act in actdata">
       <div class="row">
@@ -137,7 +150,7 @@
         <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
     </div>
     <div class="page-title"><h3>Events</h3></div>
-    <div ng-controller="AdminController">
+    <div>
       <div class="eventTiles" ng-repeat="act in actdata">
       <div class="row">
           <div class="section padding">
@@ -170,33 +183,39 @@
       </div>
 </div>
           <!-- NEWS -->
+
           <div id="news" class="col s12">
             <div class="fixed-action-btn" tyle="bottom: 45px; right: 24px;">
                 <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
             </div>
             <div class="page-title"><h3>News</h3></div>
 
-              <div ng-controller="AdminController">
+              <div>
                 <div class="newsTiles" ng-repeat="act in actdata">
               <div class="row">
 
                   <div class="section padding">
                     <div class="padding col s12 m6 l4" ng-repeat="news in act.news">
-                  <div class="card hoverable">
+                  <div class="card hoverable" ng-style="{background: doc_classes_colors[$index % doc_classes_colors.length]}">
                     <div class="card-content">
-                      <span class="card-title activator grey-text text-darken-4">{{news.news_title}}<i class="material-icons right">more_vert</i></span>
+                      <span class="card-title activator grey-text text-darken-4" ng-click="linesLimit = 5; letterLimit = 300;">{{news.news_title}}<i class="material-icons right">more_vert</i></span>
                       <blockquote ng-show="news.news_blockquote">
                         "{{news.news_blockquote}}"
                       </blockquote>
-                      <p class="activator">{{news.news_content_text | limitTo:letterLimit | maxLines: linesLimit }}</p>
-                      <div ng-show="(news.news_content_text | textSize:letterLimit:linesLimit) == true"><a class="waves-effect waves-light btn" href="#" ng-click="linesLimit = 150; letterLimit = 10000;"><span>read more</span></a></div>
+                      <p class="activator" ng-click="linesLimit = 5; letterLimit = 300;">{{news.news_content_text | limitTo:letterLimit | maxLines: linesLimit }}</p>
+                      <div ng-show="(news.news_content_text | textSize:letterLimit:linesLimit) == true"><a class="waves-effect waves-light" href="#" ng-click="linesLimit = 150; letterLimit = 10000;"><span>read more</span></a></div>
                     </div>
 
                     <div class="card-reveal">
                       <span class="card-title grey-text text-darken-4">{{news.news_title}}<i class="material-icons right">close</i></span>
-
+                      <div class="center-align">
+                        <div class="row">
                           <a class="waves-effect waves-light btn center-align"><i class="material-icons left">edit</i>edit</a>
-
+                        </div>
+                        <div class="row">
+                          <a class="waves-effect waves-light btn center-align red"><i class="material-icons left">delete</i>delete</a>
+                      </div>
+                      </div>
                     </div>
 
 
@@ -208,7 +227,7 @@
           </div>
         </div>
       </div>
-
+</div>
 
     <!-- Angular Material Dependencies -->
     <!--Import jQuery before materialize.js-->

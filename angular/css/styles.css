@@ -34,3 +34,7 @@ padding:0px 5px;
   .page-title{
     padding:10px;
   }
+
+  .newsTiles .card, .eventTiles .card, .imageTiles .card, .postTiles .card{
+    min-height: 200px;
+  }

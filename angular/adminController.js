@@ -6,6 +6,29 @@
 var app =  angular
         .module('StarterApp');
 
+        app.directive('loading',   ['$http' ,function ($http)
+    {
+        return {
+            restrict: 'A',
+            link: function (scope, elm, attrs)
+            {
+                scope.isLoading = function () {
+                    return $http.pendingRequests.length > 0;
+                };
+
+                scope.$watch(scope.isLoading, function (v)
+                {
+                    if(v){
+                        elm.show();
+                    }else{
+                        elm.hide();
+                    }
+                });
+            }
+        };
+
+    }]);
+
         app.filter('month', function() {
           return function(date) {
             var time = date.split(" ");
@@ -92,12 +115,29 @@ var app =  angular
 
         app.controller('AdminController', function($scope, $http) {
 
+          $scope.doc_classes_colors = _.shuffle([
+             "#ffcdd2",
+             "#f8bbd0",
+             "#e1bee7",
+             "#d1c4e9",
+             "#c5cae9",
+             "#bbdefb",
+             "#b3e5fc",
+             "#b2ebf2",
+             "#b2dfdb",
+             "#c8e6c9",
+             "#dcedc8",
+             "#f0f4c3"
+        ]);
+          $scope.getRandomColor = function () {
+          $scope.bgColor = $scope.doc_classes_colors[Math.floor(Math.random() * $scope.doc_classes_colors.length)];
+          };
+
           $scope.letterLimit = 250;
           $scope.linesLimit = 5;
 
           $http.get('http://admin.soundfi:8888/api/actdata?slug=theqemists').then(function(act) {
               $scope.actdata = act;
-              console.log($scope.actdata);
             })
 
         });
