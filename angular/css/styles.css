@@ -21,7 +21,7 @@ padding:0px 5px;
     height: 112px;
   }
 
-  .card .card-content .card-title {
+  .card .card-content .card-title, .card .card-reveal .card-title  {
     line-height: 30px;
     padding-bottom: 10px;
     display: block;
@@ -29,4 +29,8 @@ padding:0px 5px;
 
   .activator{
     cursor:pointer;
+  }
+
+  .page-title{
+    padding:10px;
   }

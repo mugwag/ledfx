@@ -95,7 +95,7 @@ var app =  angular
           $scope.letterLimit = 250;
           $scope.linesLimit = 5;
 
-          $http.get('http://dev.ledfx:8888/testdata/apidata.json').then(function(act) {
+          $http.get('http://admin.soundfi:8888/api/actdata?slug=theqemists').then(function(act) {
               $scope.actdata = act;
               console.log($scope.actdata);
             })
