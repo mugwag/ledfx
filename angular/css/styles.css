@@ -18,7 +18,7 @@ padding:0px 5px;
 
 
 .navbar-fixed{
-    height: 112px;
+    height: 72px;
   }
 
   .card .card-content .card-title, .card .card-reveal .card-title  {
@@ -38,3 +38,21 @@ padding:0px 5px;
   .newsTiles .card, .eventTiles .card, .imageTiles .card, .postTiles .card{
     min-height: 200px;
   }
+
+
+nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+    height: 25px;
+    line-height: 25px;
+}
+
+nav .brand-logo {
+    font-size: 1.1rem;
+}
+
+.linkCollection i {
+  font-size: 60px;
+}
+
+.linkCollection a:hover{
+  cursor: pointer;
+}
