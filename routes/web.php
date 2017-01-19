@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('ledfx');
 });
+
+Route::get('login', function () {
+    return view('login');
+});
+
+Route::post('auth/login', 'Auth\LoginController@login');
+
+Route::resource('products', 'productsController');
