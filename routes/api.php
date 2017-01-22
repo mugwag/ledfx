@@ -17,6 +17,10 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
-Route::get('/api', function (Request $request) {
-    return "Hello World";
-})->middleware('auth:api');
+// Route::get('/api', function (Request $request) {
+//     return "Hello World";
+// })->middleware('auth:api');
+
+Route::get('/data', 'apiController@getData')
+    ->middleware('auth:api')
+    ;

@@ -9,9 +9,9 @@
 
 
   <ul class="tabs grey darken-4">
-    <li class="tab"><a class="waves-effect active" href="#posts">Images</a></li>
-    <li class="tab"><a class="waves-effect" href="#images">Products</a></li>
-    <li class="tab"><a class="waves-effect" href="#images">Text</a></li>
+    <li class="tab"><a class="waves-effect active" href="/categories" target="_self">Categories</a></li>
+    <li class="tab"><a class="waves-effect" href="/products" target="_self">Products</a></li>
+    <li class="tab"><a class="waves-effect" href="/text" target="_self">Text</a></li>
 
   </ul>
 

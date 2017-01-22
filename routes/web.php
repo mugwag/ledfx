@@ -22,3 +22,4 @@ Route::get('login', function () {
 Route::post('auth/login', 'Auth\LoginController@login');
 
 Route::resource('products', 'productsController');
+Route::resource('categories', 'categoriesController');
