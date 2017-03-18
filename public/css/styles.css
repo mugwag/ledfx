@@ -80,3 +80,12 @@
     .flash.alert-danger{
       background-color: red;
     }
+
+    .parallax_image{
+      width:100%;
+    }
+
+    .parallax_image img{
+      width:100%;
+      height:auto;
+    }

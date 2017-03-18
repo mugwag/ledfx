@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Products;
 use App\Categories;
+use App\Meta;
 
 use Response;
 
@@ -17,7 +18,8 @@ class apiController extends Controller
 
       $data = [
         'categories' => Categories::all(),
-        'products' => Products::all()
+        'products' => Products::all(),
+        'meta' => Meta::all()
       ]
       ;
 

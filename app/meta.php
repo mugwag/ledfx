@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class text extends Model
+class meta extends Model
 {
-  protected $table = 'text';
+  protected $table = 'meta';
   protected $primaryKey = 'id';
-  protected $fillable = ['text', 'lang_id'];
+  protected $fillable = ['key', 'value'];
 }

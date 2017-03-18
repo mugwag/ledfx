@@ -137,9 +137,17 @@ var app =  angular
 
           $http.get('http://admin.ledfx:8888/api/data').then(function(data) {
               $scope.data = data;
+
+              $scope.homepage_image_object = $scope.data.data.meta.filter(function(item){
+                    return item.key === 'homepage_image';
+              });
+
+              $scope.homepage_image_url = $scope.homepage_image_object[0].value;
+
             });
 
-          console.log('hi');
+
+
 
 
         });
