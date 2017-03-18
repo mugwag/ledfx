@@ -40,14 +40,6 @@ padding:0px 5px;
   }
 
 
-nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
-    height: 25px;
-    line-height: 25px;
-}
-
-nav .brand-logo {
-    font-size: 1.1rem;
-}
 
 .linkCollection i {
   font-size: 60px;
@@ -63,4 +55,34 @@ nav .brand-logo {
   height: 32px;
   width: 32px;
   border-radius: 50%;
+}
+
+.parallax-container{
+  height:400px;
+}
+
+.parallax img{
+  width:100%;
+  height:auto;
+}
+
+.card.category .card-image{
+  max-height: 200px;
+  overflow: hidden;
+}
+
+.card.category .card-image .card-title{
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.card.product .card-image{
+  height: 150px;
+  overflow: hidden;
+}
+
+.card.product .card-title{
+  font-size: 20px;
+  font-weight: normal;;
+  color: #333;
 }

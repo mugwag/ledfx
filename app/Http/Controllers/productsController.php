@@ -22,7 +22,8 @@ class productsController extends Controller
 
     public function create()
     {
-      return view('products.create');
+      $product = [];
+      return view('products.create', compact('product'));
     }
 
     public function store(Request $request)
@@ -64,12 +65,35 @@ class productsController extends Controller
         $entry->save();
       // $product = Products::create( $input );
 
-      return redirect()->action('productsController@show', $entry->id)->with('message', 'Product created!');
+      return redirect()->action('productsController@index', $entry->id)->with('message', 'Product created!');
     }
 
     public function show($id)
     {
       $product = Products::find($id);
       return view('products.show', compact('product'));
+    }
+
+    public function edit($id)
+    {
+      $product = Products::find($id);
+      return view('products.edit', compact('product'));
+    }
+
+    public function update($id)
+    {
+      $product = Products::find($id);
+      return view('products.edit', compact('product'));
+    }
+
+    public function destroy($id){
+
+    $product = Products::find($id);
+      // delete product
+    $product->delete();
+
+    // redirect
+    Session::flash('message', 'Successfully deleted product!');
+    return redirect()->action('productsController@index');
     }
 }

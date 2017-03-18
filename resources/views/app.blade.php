@@ -73,31 +73,33 @@
     <body>
       @include('nav')
 
+
+
       <div>
-      @if (Session::has('message'))
-
-
-                    <div class="flash alert-info">
-                         <p>{{ Session::get('message') }}</p>
-                    </div>
-                @endif
-
-
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                    <div class='flash alert-danger'>
-                        @foreach ( $errors->all() as $error )
-                          <p>{{ $error }}</p>
-                        @endforeach
-                    </div>
-                </div>
-        @endif
-      </div>
-
-
 
 
                 <div class="container">
+
+                  <div>
+                  @if (Session::has('message'))
+
+
+                                <div class="flash alert-info">
+                                     <p>{{ Session::get('message') }}</p>
+                                </div>
+                            @endif
+
+
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <div class='flash alert-danger'>
+                                    @foreach ( $errors->all() as $error )
+                                      <p>{{ $error }}</p>
+                                    @endforeach
+                                </div>
+                            </div>
+                    @endif
+                  </div>
 
 
                     @yield('content')

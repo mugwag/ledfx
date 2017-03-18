@@ -128,10 +128,20 @@ var app =  angular
         });
 
 
+        app.controller('FrontController', function($scope, $http) {
 
-/**
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
-**/
+
+
+          $scope.letterLimit = 250;
+          $scope.linesLimit = 5;
+
+          $http.get('http://admin.ledfx:8888/api/data').then(function(data) {
+              $scope.data = data;
+            });
+
+          console.log('hi');
+
+
+        });
 
   })(); // EO controller file

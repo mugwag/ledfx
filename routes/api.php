@@ -20,7 +20,10 @@ Route::get('/user', function (Request $request) {
 // Route::get('/api', function (Request $request) {
 //     return "Hello World";
 // })->middleware('auth:api');
-
-Route::get('/data', 'apiController@getData')
-    ->middleware('auth:api')
-    ;
+Route::group([
+        'middleware' => ['cors']
+    ], function ($router) {
+    Route::get('/data', 'apiController@getData')
+        // ->middleware('auth:api')
+        ;
+      });
